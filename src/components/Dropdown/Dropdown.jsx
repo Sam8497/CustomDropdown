@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./dropdown.scss";
 import { ArrowIcon, CheckIcon, SearchIcon } from "../icons/Icons";
-import { debounce } from "../utils";
+import { debounce } from "../../utils";
 
 // Helper functions
 const formatData = (data) => {
@@ -103,9 +103,10 @@ const Dropdown = ({ url, searchMode = "internal" }) => {
       ...prev,
       selectedOption: option,
       isOpen: false,
+      filteredOptions: prev.options
     }));
     setSearchState(prev => ({ ...prev, searchTerm: "" }));
-  };
+  };   
 
   // Render methods
   const renderSearchInput = () => (
